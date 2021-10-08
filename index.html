@@ -6,15 +6,15 @@
   <!-- <link rel="stylesheet" href="master.css"> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <style media="screen">
-    .bg-kudark {
-      background-color: rgb(3, 107, 63);
-    }
-    .bg-kulight {
-      background-color: rgb(184, 243, 41);
-    }
-    .bg-ku {
-      background-color: rgb(33, 186, 49);
-    }
+  .bg-kudark {
+    background-color: rgb(3, 107, 63);
+  }
+  .bg-kulight {
+    background-color: rgb(184, 243, 41);
+  }
+  .bg-ku {
+    background-color: rgb(33, 186, 49);
+  }
   </style>
   <title>이데아 취향표</title>
 </head>
@@ -33,12 +33,24 @@
     </div>
   </header>
   <script type="text/javascript">
-    var answer = {'qq': 1,}
-    function select(x,y) {
-      answer[x] = y
-    }
+  var answer = {'qq': 1,}
+  function select(x,y) {
+    answer[x] = y
+  }
   </script>
   <main class="container" style="max-width: 60rem;">
+    <script type="text/javascript">
+    // 질문 생성
+    var myqset = [];
+    var yourqset = [];
+    myqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
+    myqset.push(["ddd","aaa","bbb"]);
+    myqset.push(["ddad","aaaa","babb"]);
+    myqset.push(["dddd","afaa","bsbb"]);
+    // 답변 생성
+    var myanswer = [];
+    var youranswer = [];
+    </script>
     <article class="row g-3 mb-3">
       <section class="col-12 col-sm-6">
         <div class="card border-success">
@@ -47,21 +59,11 @@
           </div>
           <form class="card-body p-1 pb-0">
             <script type="text/javascript">
-            // 질문 생성
-            var myqset = [];
-            var yourqset = [];
-            myqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
-            myqset.push(["ddd","aaa","bbb"]);
-            myqset.push(["ddad","aaaa","babb"]);
-            myqset.push(["dddd","afaa","bsbb"]);
-            // 답변 생성
-            var myanswer = [];
-            var youranswer = [];
             for (var i = 0; i < myqset.length; i++) {
               myanswer.push(0);
               document.write("<div class=\"btn-group w-100 mb-1\">");
               for (var j = 0; j < myqset[i].length; j++) {
-                document.write("<input id=\"q"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-q"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"q"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+myqset[i][j]+"</label>");
+                document.write("<input id=\"myq"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-myq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"myq"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+myqset[i][j]+"</label>");
               }
               document.write("</div>");
             }
@@ -73,6 +75,18 @@
         <div class="card border-success">
           <div class="card-header bg-success text-light">
             내가 원하는 너는 어떤 사람?
+          </div>
+          <div class="card-body">
+            <script type="text/javascript">
+            for (var i = 0; i < yourqset.length; i++) {
+              youranswer.push(0);
+              document.write("<div class=\"btn-group w-100 mb-1\">");
+              for (var j = 0; j < yourqset[i].length; j++) {
+                document.write("<input id=\"yourq"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-yourq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"yourq"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+myqset[i][j]+"</label>");
+              }
+              document.write("</div>");
+            }
+            </script>
           </div>
         </div>
       </section>
@@ -96,28 +110,28 @@
     </div>
   </main>
   <script type="text/javascript">
-    var url = window.location.origin + window.location.pathname;
-    var parameter = window.location.search;
+  var url = window.location.origin + window.location.pathname;
+  var parameter = window.location.search;
+  for (var i = 0; i < myanswer.length; i++) {
+    var qnumber = "q"+i;
+    var getanswer = new URLSearchParams(parameter).get(qnumber);
+    document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
+  }
+  for (var i = 0; i < youranswer.length; i++) {
+    var qnumber = "q"+i;
+    var getanswer = new URLSearchParams(parameter).get(qnumber);
+    document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
+  }
+  function result() {
+    var stream = "?result=page";
     for (var i = 0; i < myanswer.length; i++) {
-      var qnumber = "q"+i;
-      var getanswer = new URLSearchParams(parameter).get(qnumber);
-      document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
+      stream = stream+"&myq"+i+"="+myanswer[i];
     }
     for (var i = 0; i < youranswer.length; i++) {
-      var qnumber = "q"+i;
-      var getanswer = new URLSearchParams(parameter).get(qnumber);
-      document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
+      stream = stream+"&yourq"+i+"="+youranswer[i];
     }
-    function result() {
-      var stream = "?result=page";
-      for (var i = 0; i < myanswer.length; i++) {
-        stream = stream+"&myq"+i+"="+myanswer[i];
-      }
-      for (var i = 0; i < youranswer.length; i++) {
-        stream = stream+"&yourq"+i+"="+youranswer[i];
-      }
-      document.getElementById('share').innerText = url + stream;
-    }
+    document.getElementById('share').innerText = url + stream;
+  }
   </script>
   <footer class="py-3 bg-kulight">
     <div id="copyright" class="m-auto text-center">
