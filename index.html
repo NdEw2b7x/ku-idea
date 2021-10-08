@@ -113,14 +113,14 @@
   var url = window.location.origin + window.location.pathname;
   var parameter = window.location.search;
   for (var i = 0; i < myanswer.length; i++) {
-    var qnumber = "myq"+i;
-    var getanswer = new URLSearchParams(parameter).get(qnumber);
-    document.getElementById(qnumber+"-"+getanswer).checked = true;
+    var getanswer = new URLSearchParams(parameter).get("myq"+i);
+    myanswer[i] = getanswer;
+    document.getElementById("myq"+i+"-"+getanswer).checked = true;
   }
   for (var i = 0; i < youranswer.length; i++) {
-    var qnumber = "yourq"+i;
-    var getanswer = new URLSearchParams(parameter).get(qnumber);
-    document.getElementById(qnumber+"-"+getanswer).checked = true;
+    var getanswer = new URLSearchParams(parameter).get("yourq"+i);
+    youranswer[i] = getanswer;
+    document.getElementById("yourq"+i+"-"+getanswer).checked = true;
   }
   function result() {
     var stream = "?result=page";
