@@ -16,12 +16,12 @@
     background-color: rgb(33, 186, 49);
   }
   </style>
-  <title>이데아 취향표</title>
+  <title>Table of Ideal</title>
 </head>
 <body>
   <header class="navbar navbar-expand navbar-dark bg-kudark mb-3 sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">이데아 취향표</a>
+      <a class="navbar-brand" href="#">Table of Ideal</a>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -44,9 +44,9 @@
     var myqset = [];
     var yourqset = [];
     myqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
-    myqset.push(["ddd","aaa","bbb"]);
-    myqset.push(["ddad","aaaa","babb"]);
-    myqset.push(["dddd","afaa","bsbb"]);
+    myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
+    myqset.push(["마른 좋아","보통 좋아","통통 좋아"]);
+    myqset.push(["무쌍 좋아","다 좋아","유쌍 좋아"]);
     // 답변 생성
     var myanswer = [];
     var youranswer = [];
@@ -60,7 +60,7 @@
           <form class="card-body p-1 pb-0">
             <script type="text/javascript">
             for (var i = 0; i < myqset.length; i++) {
-              myanswer.push(0);
+              myanswer.push("");
               document.write("<div class=\"btn-group w-100 mb-1\">");
               for (var j = 0; j < myqset[i].length; j++) {
                 document.write("<input id=\"myq"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-myq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"myq"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+myqset[i][j]+"</label>");
@@ -79,7 +79,7 @@
           <div class="card-body">
             <script type="text/javascript">
             for (var i = 0; i < yourqset.length; i++) {
-              youranswer.push(0);
+              youranswer.push("");
               document.write("<div class=\"btn-group w-100 mb-1\">");
               for (var j = 0; j < yourqset[i].length; j++) {
                 document.write("<input id=\"yourq"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-yourq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"yourq"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+myqset[i][j]+"</label>");
@@ -93,7 +93,7 @@
       <section class="col-12">
         <div class="d-grid">
           <button id="btn-share" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-share" onclick="result()">결과 공유</button>
-          <a id="btn-new" class="btn btn-success" href="./">다시 작성하기</a>
+          <a id="btn-new" class="btn btn-success d-none" href="./">다시 작성하기</a>
         </div>
       </section>
     </article>
