@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="master.css"> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <style media="screen">
   .bg-kudark {
@@ -42,11 +41,17 @@
     <script type="text/javascript">
     // 질문 생성
     var myqset = [];
-    var yourqset = [];
     myqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
     myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
     myqset.push(["마른 좋아","보통 좋아","통통 좋아"]);
-    myqset.push(["무쌍 좋아","다 좋아","유쌍 좋아"]);
+    myqset.push(["무쌍 좋아","속쌍 좋아","겉쌍 좋아"]);
+    myqset.push(["츤데레 좋아","츤데레 싫어"]);
+    myqset.push(["귀여운 사람 좋아","귀여운 사람 싫어"]);
+    myqset.push(["안경 좋아","안경 싫어"]);
+    myqset.push(["아이폰 좋아","안드로이드 좋아"]);
+    myqset.push(["칼답 최고","조금은 괜찮아","신경 안써"]);
+    var yourqset = [];
+    yourqset.push(["무쌍 좋아","다 좋아","유쌍 좋아"]);
     // 답변 생성
     var myanswer = [];
     var youranswer = [];
@@ -55,7 +60,7 @@
       <section class="col-12 col-sm-6">
         <div class="card border-success">
           <div class="card-header bg-success text-light">
-            나는 어떤 사람?
+            나는 이런 사람이에요
           </div>
           <form class="card-body p-1 pb-0">
             <script type="text/javascript">
@@ -74,9 +79,9 @@
       <section class="col-12 col-sm-6">
         <div class="card border-success">
           <div class="card-header bg-success text-light">
-            내가 원하는 너는 어떤 사람?
+            내가 원하는 너는...
           </div>
-          <div class="card-body">
+          <div class="card-body p-1 pb-0">
             <script type="text/javascript">
             for (var i = 0; i < yourqset.length; i++) {
               youranswer.push("");
