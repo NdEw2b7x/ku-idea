@@ -87,7 +87,7 @@
               youranswer.push("");
               document.write("<div class=\"btn-group w-100 mb-1\">");
               for (var j = 0; j < yourqset[i].length; j++) {
-                document.write("<input id=\"yourq"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-yourq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"yourq"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+myqset[i][j]+"</label>");
+                document.write("<input id=\"yourq"+i+"-"+j+"\" class=\"btn-check\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\"><label id=\"for-yourq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"yourq"+i+"-"+j+"\" onclick=\"myanswer["+i+"] = "+j+"\">"+yourqset[i][j]+"</label>");
               }
               document.write("</div>");
             }
