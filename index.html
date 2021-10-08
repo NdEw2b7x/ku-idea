@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="master.css">
+  <!-- <link rel="stylesheet" href="master.css"> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <style media="screen">
     .bg-kudark {
@@ -96,26 +96,25 @@
     </div>
   </main>
   <script type="text/javascript">
+    var url = window.location.origin + window.location.pathname;
     var parameter = window.location.search;
     for (var i = 0; i < myanswer.length; i++) {
       var qnumber = "q"+i;
       var getanswer = new URLSearchParams(parameter).get(qnumber);
-      document.getElementById(qnumber+"-"getanswer).createAttribute("checked");
+      document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
     }
     for (var i = 0; i < youranswer.length; i++) {
       var qnumber = "q"+i;
       var getanswer = new URLSearchParams(parameter).get(qnumber);
-      document.getElementById(qnumber+"-"getanswer).createAttribute("checked");
+      document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
     }
-    document.write(parameter);
-    var url = window.location.origin + window.location.pathname;
     function result() {
       var stream = "?result=page";
       for (var i = 0; i < myanswer.length; i++) {
-        stream+="&myq"+i+"="+myanswer[i];
+        stream = stream+"&myq"+i+"="+myanswer[i];
       }
       for (var i = 0; i < youranswer.length; i++) {
-        stream+="&yourq"+i+"="+youranswer[i];
+        stream = stream+"&yourq"+i+"="+youranswer[i];
       }
       document.getElementById('share').innerText = url + stream;
     }
