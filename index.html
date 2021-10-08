@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" dir="ltr" ondragstart="return false" oncontextmenu="return false" onselectstart="return false">
+<html lang="ko" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +51,7 @@
     var myanswer = [];
     var youranswer = [];
     </script>
-    <article class="row g-3 mb-3">
+    <article class="row g-3 mb-3" ondragstart="return false" oncontextmenu="return false" onselectstart="return false">
       <section class="col-12 col-sm-6">
         <div class="card border-success">
           <div class="card-header bg-success text-light">
@@ -92,8 +92,7 @@
       </section>
       <section class="col-12">
         <div class="d-grid">
-          <button id="btn-share" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-share" onclick="result()">결과 공유</button>
-          <a id="btn-new" class="btn btn-success d-none" href="./">다시 작성하기</a>
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-share" onclick="result()">결과 공유</button>
         </div>
       </section>
     </article>
@@ -116,20 +115,12 @@
   for (var i = 0; i < myanswer.length; i++) {
     var qnumber = "myq"+i;
     var getanswer = new URLSearchParams(parameter).get(qnumber);
-    document.getElementById("for-"+qnumber+"-"+getanswer).classList.add("active");
+    document.getElementById(qnumber+"-"+getanswer).checked = true;
   }
   for (var i = 0; i < youranswer.length; i++) {
     var qnumber = "yourq"+i;
     var getanswer = new URLSearchParams(parameter).get(qnumber);
-    document.getElementById("for-"+qnumber+"-"+getanswer).classList.add("active");
-  }
-  var getnew = new URLSearchParams(parameter).get("result");
-  if (getnew == "page") {
-    document.getElementById("btn-new").classList.remove("d-none");
-    document.getElementById("btn-share").classList.add("d-none");
-  } else {
-    document.getElementById("btn-new").classList.add("d-none");
-    document.getElementById("btn-share").classList.remove("d-none");
+    document.getElementById(qnumber+"-"+getanswer).checked = true;
   }
   function result() {
     var stream = "?result=page";
