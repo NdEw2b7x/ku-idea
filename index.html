@@ -92,7 +92,8 @@
       </section>
       <section class="col-12">
         <div class="d-grid">
-          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-share" onclick="result()">결과 공유</button>
+          <button id="btn-share" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-share" onclick="result()">결과 공유</button>
+          <a id="btn-new" class="btn btn-success" href="./">다시 작성하기</a>
         </div>
       </section>
     </article>
@@ -113,14 +114,22 @@
   var url = window.location.origin + window.location.pathname;
   var parameter = window.location.search;
   for (var i = 0; i < myanswer.length; i++) {
-    var qnumber = "q"+i;
+    var qnumber = "myq"+i;
     var getanswer = new URLSearchParams(parameter).get(qnumber);
-    document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
+    document.getElementById("for-"+qnumber+"-"+getanswer).classList.add("active");
   }
   for (var i = 0; i < youranswer.length; i++) {
-    var qnumber = "q"+i;
+    var qnumber = "yourq"+i;
     var getanswer = new URLSearchParams(parameter).get(qnumber);
-    document.getElementById(qnumber+"-"+getanswer).createAttribute("checked");
+    document.getElementById("for-"+qnumber+"-"+getanswer).classList.add("active");
+  }
+  var getnew = new URLSearchParams(parameter).get("result");
+  if (getnew == "page") {
+    document.getElementById("btn-new").classList.remove("d-none");
+    document.getElementById("btn-share").classList.add("d-none");
+  } else {
+    document.getElementById("btn-new").classList.add("d-none");
+    document.getElementById("btn-share").classList.remove("d-none");
   }
   function result() {
     var stream = "?result=page";
