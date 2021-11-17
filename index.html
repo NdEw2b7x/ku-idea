@@ -43,7 +43,8 @@
     myqset.push(["마른 사람","보통","통통한 사람"]);
     myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
     myqset.push(["무쌍","속쌍","겉쌍"]);
-    myqset.push(["ENxx","ESxx","IN","ISxx"]);
+    myqset.push(["사진교환 가능","사진교환 불가능"]);
+    myqset.push(["ENxx","ESxx","INxx","ISxx"]);
     myqset.push(["xxFJ","xxFP","xxTJ","xxTP"]);
     var yourqset = [];
     yourqset.push(["남자","여자"]);
@@ -58,6 +59,7 @@
     yourqset.push(["칼답 최고","조금은 괜찮아","신경 안써"]);
     yourqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
     yourqset.push(["무쌍 좋아","다 좋아","유쌍 좋아"]);
+    yourqset.push(["사진교환 가능","사진교환 불가능"]);
     // 답변 생성
     var myanswer = [];
     var youranswer = [];
@@ -68,7 +70,7 @@
           <div class="card-header bg-success text-light">
             나는 이런 사람입니다.
           </div>
-          <form class="card-body p-1 pb-0" id="cardmy">
+          <form class="card-body p-1 pb-0">
             <script type="text/javascript">
             for (var i = 0; i < myqset.length; i++) {
               myanswer.push([]);
