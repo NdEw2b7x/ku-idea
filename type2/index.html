@@ -18,7 +18,7 @@
   <title>이런 사람 어디있는 건대?</title>
 </head>
 <body>
-  <header class="navbar navbar-expand navbar-dark bg-kudark mb-3">
+  <header class="navbar navbar-expand navbar-dark bg-kudark mb-3 sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">이런 사람 어디있는 건대?</a>
       <div class="collapse navbar-collapse">
@@ -36,16 +36,20 @@
   </header>
   <main class="container" style="max-width: 60rem;">
     <script type="text/javascript">
-    // 질문 생성
+    // 질의 생성
     var myqset = [];
-    myqset.push(["155cm","165cm","175cm","185cm"]);
-    myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
-    myqset.push(["xNFx","xNTx","xSFx","xSTx"]);
-    myqset.push(["ExxJ","ExxP","IxxJ","IxxP"]);
+    myqset.push("MBTI");
+    myqset.push("2");
+    myqset.push("3");
+    var myaset = [];
+    myaset.push(["ENFJ","ENFP","ENTJ","ENTP","ESFJ","ESFP","ESTJ","ESTP","INFJ","INFP","INTJ","INTP","ISFJ","ISFP","ISTJ","ISTP"]);
+    myaset.push(["INTJ","INTP","ISFJ","ISFP","ISTJ","ISTP"]);
+    myaset.push(["ENFJ","ENFP","ENTJ","ENTP","INTP","ISFJ","ISFP","ISTJ","ISTP"]);
     var yourqset = [];
-    yourqset.push(["155cm","165cm","175cm","185cm"]);
+    var youraset = [];
     yourqset.push(["마른 사람","보통","통통한 사람"]);
     yourqset.push(["무쌍 좋아","속쌍 좋아","겉쌍 좋아"]);
+    yourqset.push(["155cm","165cm","175cm","185cm"]);
     yourqset.push(["츤데레 좋아","츤데레 싫어"]);
     yourqset.push(["귀여운 사람 좋아","귀여운 사람 싫어"]);
     yourqset.push(["안경 좋아","안경 싫어"]);
@@ -63,17 +67,20 @@
           <div class="card-header bg-success text-light">
             나는 이런 사람입니다.
           </div>
-          <form class="card-body p-1 pb-0" id="cardmy">
+          <form class="card-body row g-3">
             <script type="text/javascript">
             for (var i = 0; i < myqset.length; i++) {
-              myanswer.push([]);
-              document.write("<div class=\"btn-group w-100 mb-1\" id=\"myq"+i+"\">");
-              for (var j = 0; j < myqset[i].length; j++) {
-                myanswer[i].push("");
-                document.write("<input id=\"myq"+i+"-"+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
-                document.write("<label id=\"for-myq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"myq"+i+"-"+j+"\" onclick=\"selectmy("+i+","+j+")\">"+myqset[i][j]+"</label>");
+              myanswer.push("");
+              document.write('<div class="col-12">');
+              document.write('<label class="form-label">'+myqset[i]+"</label>");
+              document.write("<select class='form-select'>");
+              for (var j = 0; j < myaset[i].length; j++) {
+                document.write('<option value="'+j+'">');
+                document.write(myaset[i][j]);
+                document.write("</option>");
               }
-              document.write("</div>");
+              document.write("</select>");
+              document.write('</div>');
             }
             </script>
           </form>
@@ -88,7 +95,7 @@
             <script type="text/javascript">
             for (var i = 0; i < yourqset.length; i++) {
               youranswer.push([]);
-              document.write("<div class=\"btn-group w-100 mb-1\" id=\"yourq"+i+"\">");
+              document.write("<div class=\"btn-group w-100 mb-1\">");
               for (var j = 0; j < yourqset[i].length; j++) {
                 youranswer[i].push("");
                 document.write("<input id=\"yourq"+i+"-"+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
@@ -139,13 +146,14 @@
       var getanswer = new URLSearchParams(parameter).get("yourq"+i+"-"+j);
       console.log(getanswer);
       if (getanswer == 1) {
-        youranswer[i][j] = 1;
         document.getElementById("yourq"+i+"-"+j).checked = true;
       } else {
         document.getElementById("yourq"+i+"-"+j).checked = false;
       }
     }
   }
+  console.log(myanswer)
+  console.log(youranswer)
   function result() {
     var stream = "?result=";
     for (var i = 0; i < myanswer.length; i++) {
@@ -159,44 +167,6 @@
       }
     }
     document.getElementById('share').innerText = url + stream;
-  }
-  function selectmy(x,y) {
-    if (document.getElementById("myq"+x+"-"+y).checked == false) {
-      myanswer[x][y] = 1;
-    } else {
-      myanswer[x][y] = 0;
-    }
-    var stream = "?result=";
-    for (var i = 0; i < myanswer.length; i++) {
-      for (var j = 0; j < myanswer[i].length; j++) {
-        stream = stream+"&myq"+i+"-"+j+"="+myanswer[i][j];
-      }
-    }
-    for (var i = 0; i < youranswer.length; i++) {
-      for (var j = 0; j < youranswer[i].length; j++) {
-        stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
-      }
-    }
-    location.href = url + stream + "#myq"+Math.round(x/10);
-  }
-  function selectyour(x,y) {
-    if (document.getElementById("yourq"+x+"-"+y).checked == false) {
-      youranswer[x][y] = 1;
-    } else {
-      youranswer[x][y] = 0;
-    }
-    var stream = "?result=";
-    for (var i = 0; i < myanswer.length; i++) {
-      for (var j = 0; j < myanswer[i].length; j++) {
-        stream = stream+"&myq"+i+"-"+j+"="+myanswer[i][j];
-      }
-    }
-    for (var i = 0; i < youranswer.length; i++) {
-      for (var j = 0; j < youranswer[i].length; j++) {
-        stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
-      }
-    }
-    location.href = url + stream + "#yourq"+Math.round(x/10);
   }
 </script>
 <footer class="py-3 bg-kulight">
