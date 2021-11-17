@@ -184,6 +184,15 @@
       }
     }
   }
+  function cp(x) {
+    var t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.value = x;
+    t.select();
+    document.execCommand("Copy");
+    document.body.removeChild(t);
+    alert("링크를 복사했습니다.");
+  }
   function result() {
     var stream = "?result=";
     for (var i = 0; i < myanswer.length; i++) {
@@ -197,6 +206,7 @@
       }
     }
     document.getElementById('share').innerText = url + stream;
+    document.getElementById('share').select();
   }
   function selectmy(x,y) {
     if (document.getElementById("0"+x+y).checked == false) {
