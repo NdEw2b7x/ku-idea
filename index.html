@@ -35,38 +35,54 @@
     </div>
   </header>
   <main class="container" style="max-width: 60rem;">
+    <div class="alert alert-success">
+      <h6 class="alert-title">♡자매품♡</h6>
+      <a class="alert-link" href="balgame">심심해서 만드는 밸런스게임</a>
+    </div>
     <script type="text/javascript">
     // 질문 생성
     var myqset = [];
     myqset.push(["남자","여자"]);
-    myqset.push(["20-23세","24-26세","27-29세"]);
-    myqset.push(["153cm","161cm","169cm","177cm","185cm"]);
-    myqset.push(["마른 사람","보통","통통한 사람"]);
-    myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
-    myqset.push(["음주해요","음주 안해요"]);
-    myqset.push(["무쌍","속쌍","겉쌍"]);
-    myqset.push(["사진교환 가능","사진교환 불가능"]);
-    myqset.push(["사진교환 가능","사진교환 불가능"]);
-    myqset.push(["사진교환 가능","사진교환 불가능"]);
-    myqset.push(["아이폰 써요","안드로이드 써요"]);
-    myqset.push(["사진교환 가능","사진교환 불가능"]);
+    myqset.push(["20-21세","22-24세","25-27세","28-29세"]);
+    myqset.push(["150cm","160cm","170cm","180cm"]);
+    myqset.push(["+1cm","+3cm","+5cm","+7cm","+9cm"]);
     myqset.push(["ENxx","ESxx","INxx","ISxx"]);
     myqset.push(["xxFJ","xxFP","xxTJ","xxTP"]);
+    myqset.push(["마른 사람","보통","통통한 사람"]);
+    myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
+    myqset.push(["음주 안하는","가끔하는","자주하는"]);
+    myqset.push(["무쌍","속쌍","겉쌍"]);
+    myqset.push(["안경을 쓰는","안경을 안쓰는"]);
+    myqset.push(["답장이 빠른","답장이 느린"]);
+    myqset.push(["건대 근처 사는","서울 사는","기타"]);
+    myqset.push(["아이폰 써요","안드로이드 써요"]);
+    myqset.push(["사진교환 가능","사진교환 불가능"]);
+    myqset.push(["친구가 많은","친구가 적은"]);
+    myqset.push(["더치페이","번갈아","데이트통장"]);
+    myqset.push(["낮이","낮져"]);
+    myqset.push(["밤이","밤져"]);
+    myqset.push(["목소리 듣다 잠들기","목소리 듣다 흥분하기"]);
     var yourqset = [];
     yourqset.push(["남자","여자"]);
-    yourqset.push(["20-23세","24-26세","27-29세"]);
-    yourqset.push(["153cm","161cm","169cm","177cm","185cm"]);
+    yourqset.push(["20-21세","22-24세","25-27세","28-29세"]);
+    yourqset.push(["150cm","160cm","170cm","180cm"]);
+    yourqset.push(["+1cm","+3cm","+5cm","+7cm","+9cm"]);
     yourqset.push(["마른 사람","보통","통통한 사람"]);
-    yourqset.push(["집돌이/집순이","밖돌이/밖순이"]);
-    yourqset.push(["무쌍","속쌍","겉쌍"]);
     yourqset.push(["츤데레 좋아","츤데레 싫어"]);
     yourqset.push(["귀여운 사람 좋아","귀여운 사람 싫어"]);
-    yourqset.push(["안경 좋아","안경 싫어"]);
+    yourqset.push(["집돌이/집순이","밖돌이/밖순이"]);
+    yourqset.push(["음주 안하는","가끔하는","자주하는"]);
+    yourqset.push(["무쌍","속쌍","겉쌍"]);
+    yourqset.push(["안경을 쓰는","안경을 안쓰는"]);
+    yourqset.push(["답장이 빠른","답장이 느린"]);
+    yourqset.push(["건대 근처 사는","서울 사는","기타"]);
     yourqset.push(["아이폰 써요","안드로이드 써요"]);
-    yourqset.push(["음주해요","음주 안해요"]);
-    yourqset.push(["칼답 최고","조금은 괜찮아","신경 안써"]);
-    yourqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
     yourqset.push(["사진교환 가능","사진교환 불가능"]);
+    yourqset.push(["친구가 많은","친구가 적은"]);
+    yourqset.push(["더치페이","번갈아","데이트통장"]);
+    yourqset.push(["낮이","낮져"]);
+    yourqset.push(["밤이","밤져"]);
+    yourqset.push(["목소리 듣다 잠들기","목소리 듣다 흥분하기"]);
     // 답변 생성
     var myanswer = [];
     var youranswer = [];
@@ -75,7 +91,7 @@
       <section class="col-12 col-sm-6">
         <div class="card border-primary">
           <div class="card-header bg-primary text-light">
-            나는 이런 사람입니다.
+            나는 이런 사람이에요.
           </div>
           <form class="card-body p-1 pb-0">
             <script type="text/javascript">
@@ -84,7 +100,7 @@
               document.write("<div class=\"btn-group w-100 mb-1\" id=\"bg0"+i+"\">");
               for (var j = 0; j < myqset[i].length; j++) {
                 myanswer[i].push("");
-                document.write("<input id=\"0"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
+                document.write("<input id=\"0"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"0"+i+j+"\" value=\""+j+"\">");
                 document.write("<label id=\"for-0"+i+j+"\" class=\"btn btn-outline-primary\" for=\"0"+i+j+"\" onclick=\"selectmy("+i+","+j+")\">"+myqset[i][j]+"</label>");
               }
               document.write("</div>");
@@ -105,8 +121,8 @@
               document.write("<div class=\"btn-group w-100 mb-1\" id=\"bg1"+i+"\">");
               for (var j = 0; j < yourqset[i].length; j++) {
                 youranswer[i].push("");
-                document.write("<input id=\"1"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
-                document.write("<label id=\"for-1"+i+j+"\" class=\"btn btn-outline-success\" for=\"0"+i+j+"\" onclick=\"selectyour("+i+","+j+")\">"+yourqset[i][j]+"</label>");
+                document.write("<input id=\"1"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"1"+i+j+"\" value=\""+j+"\">");
+                document.write("<label id=\"for-1"+i+j+"\" class=\"btn btn-outline-success\" for=\"1"+i+j+"\" onclick=\"selectyour("+i+","+j+")\">"+yourqset[i][j]+"</label>");
               }
               document.write("</div>");
             }
