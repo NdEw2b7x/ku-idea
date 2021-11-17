@@ -66,8 +66,8 @@
     </script>
     <article class="row g-3 mb-3" ondragstart="return false" oncontextmenu="return false" onselectstart="return false">
       <section class="col-12 col-sm-6">
-        <div class="card border-success">
-          <div class="card-header bg-success text-light">
+        <div class="card border-info">
+          <div class="card-header bg-info">
             나는 이런 사람입니다.
           </div>
           <form class="card-body p-1 pb-0">
@@ -78,7 +78,7 @@
               for (var j = 0; j < myqset[i].length; j++) {
                 myanswer[i].push("");
                 document.write("<input id=\"myq"+i+"-"+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
-                document.write("<label id=\"for-myq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"myq"+i+"-"+j+"\" onclick=\"selectmy("+i+","+j+")\">"+myqset[i][j]+"</label>");
+                document.write("<label id=\"for-myq"+i+"-"+j+"\" class=\"btn btn-outline-info\" for=\"myq"+i+"-"+j+"\" onclick=\"selectmy("+i+","+j+")\">"+myqset[i][j]+"</label>");
               }
               document.write("</div>");
             }
@@ -184,7 +184,7 @@
         stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
       }
     }
-    location.href = url + stream + "#myq"+Math.round(x/10);
+    location.href = url + stream + "#myq"+Math.round(x/10)*10;
   }
   function selectyour(x,y) {
     if (document.getElementById("yourq"+x+"-"+y).checked == false) {
@@ -203,7 +203,7 @@
         stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
       }
     }
-    location.href = url + stream + "#yourq"+Math.round(x/10);
+    location.href = url + stream + "#yourq"+Math.round(x/10)*10;
   }
 </script>
 <footer class="py-3 bg-kulight">
