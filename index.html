@@ -39,28 +39,33 @@
     // 질문 생성
     var myqset = [];
     myqset.push(["남자","여자"]);
-    myqset.push(["155cm","165cm","175cm","185cm"]);
+    myqset.push(["20-23세","24-26세","27-29세"]);
+    myqset.push(["153cm","161cm","169cm","177cm","185cm"]);
     myqset.push(["마른 사람","보통","통통한 사람"]);
     myqset.push(["집돌이/집순이","밖돌이/밖순이"]);
-    myqset.push(["음주 좋아","그냥 적당히","음주 싫어"]);
+    myqset.push(["음주해요","음주 안해요"]);
     myqset.push(["무쌍","속쌍","겉쌍"]);
+    myqset.push(["사진교환 가능","사진교환 불가능"]);
+    myqset.push(["사진교환 가능","사진교환 불가능"]);
+    myqset.push(["사진교환 가능","사진교환 불가능"]);
+    myqset.push(["아이폰 써요","안드로이드 써요"]);
     myqset.push(["사진교환 가능","사진교환 불가능"]);
     myqset.push(["ENxx","ESxx","INxx","ISxx"]);
     myqset.push(["xxFJ","xxFP","xxTJ","xxTP"]);
     var yourqset = [];
     yourqset.push(["남자","여자"]);
-    yourqset.push(["155cm","165cm","175cm","185cm"]);
+    yourqset.push(["20-23세","24-26세","27-29세"]);
+    yourqset.push(["153cm","161cm","169cm","177cm","185cm"]);
     yourqset.push(["마른 사람","보통","통통한 사람"]);
     yourqset.push(["집돌이/집순이","밖돌이/밖순이"]);
     yourqset.push(["무쌍","속쌍","겉쌍"]);
     yourqset.push(["츤데레 좋아","츤데레 싫어"]);
     yourqset.push(["귀여운 사람 좋아","귀여운 사람 싫어"]);
     yourqset.push(["안경 좋아","안경 싫어"]);
-    yourqset.push(["아이폰 좋아","안드로이드 좋아"]);
-    yourqset.push(["음주 좋아","그냥 적당히","음주 싫어"]);
+    yourqset.push(["아이폰 써요","안드로이드 써요"]);
+    yourqset.push(["음주해요","음주 안해요"]);
     yourqset.push(["칼답 최고","조금은 괜찮아","신경 안써"]);
     yourqset.push(["연하 좋아","동갑 좋아","연상 좋아"]);
-    yourqset.push(["무쌍 좋아","다 좋아","유쌍 좋아"]);
     yourqset.push(["사진교환 가능","사진교환 불가능"]);
     // 답변 생성
     var myanswer = [];
@@ -68,19 +73,19 @@
     </script>
     <article class="row g-3 mb-3" ondragstart="return false" oncontextmenu="return false" onselectstart="return false">
       <section class="col-12 col-sm-6">
-        <div class="card border-info">
-          <div class="card-header bg-info">
+        <div class="card border-primary">
+          <div class="card-header bg-primary text-light">
             나는 이런 사람입니다.
           </div>
           <form class="card-body p-1 pb-0">
             <script type="text/javascript">
             for (var i = 0; i < myqset.length; i++) {
               myanswer.push([]);
-              document.write("<div class=\"btn-group w-100 mb-1\" id=\"myq"+i+"\">");
+              document.write("<div class=\"btn-group w-100 mb-1\" id=\"bg0"+i+"\">");
               for (var j = 0; j < myqset[i].length; j++) {
                 myanswer[i].push("");
-                document.write("<input id=\"myq"+i+"-"+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
-                document.write("<label id=\"for-myq"+i+"-"+j+"\" class=\"btn btn-outline-info\" for=\"myq"+i+"-"+j+"\" onclick=\"selectmy("+i+","+j+")\">"+myqset[i][j]+"</label>");
+                document.write("<input id=\"0"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
+                document.write("<label id=\"for-0"+i+j+"\" class=\"btn btn-outline-primary\" for=\"0"+i+j+"\" onclick=\"selectmy("+i+","+j+")\">"+myqset[i][j]+"</label>");
               }
               document.write("</div>");
             }
@@ -97,11 +102,11 @@
             <script type="text/javascript">
             for (var i = 0; i < yourqset.length; i++) {
               youranswer.push([]);
-              document.write("<div class=\"btn-group w-100 mb-1\" id=\"yourq"+i+"\">");
+              document.write("<div class=\"btn-group w-100 mb-1\" id=\"bg1"+i+"\">");
               for (var j = 0; j < yourqset[i].length; j++) {
                 youranswer[i].push("");
-                document.write("<input id=\"yourq"+i+"-"+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
-                document.write("<label id=\"for-yourq"+i+"-"+j+"\" class=\"btn btn-outline-success\" for=\"yourq"+i+"-"+j+"\" onclick=\"selectyour("+i+","+j+")\">"+yourqset[i][j]+"</label>");
+                document.write("<input id=\"1"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"q"+i+"-"+j+"\" value=\""+j+"\">");
+                document.write("<label id=\"for-1"+i+j+"\" class=\"btn btn-outline-success\" for=\"0"+i+j+"\" onclick=\"selectyour("+i+","+j+")\">"+yourqset[i][j]+"</label>");
               }
               document.write("</div>");
             }
@@ -133,25 +138,25 @@
   var parameter = window.location.search;
   for (var i = 0; i < myanswer.length; i++) {
     for (var j = 0; j < myanswer[i].length; j++) {
-      var getanswer = new URLSearchParams(parameter).get("myq"+i+"-"+j);
+      var getanswer = new URLSearchParams(parameter).get("0"+i+j);
       console.log(getanswer);
       if (getanswer == 1) {
         myanswer[i][j] = 1;
-        document.getElementById("myq"+i+"-"+j).checked = true;
+        document.getElementById("0"+i+j).checked = true;
       } else {
-        document.getElementById("myq"+i+"-"+j).checked = false;
+        document.getElementById("0"+i+j).checked = false;
       }
     }
   }
   for (var i = 0; i < youranswer.length; i++) {
     for (var j = 0; j < youranswer[i].length; j++) {
-      var getanswer = new URLSearchParams(parameter).get("yourq"+i+"-"+j);
+      var getanswer = new URLSearchParams(parameter).get("1"+i+j);
       console.log(getanswer);
       if (getanswer == 1) {
         youranswer[i][j] = 1;
-        document.getElementById("yourq"+i+"-"+j).checked = true;
+        document.getElementById("1"+i+j).checked = true;
       } else {
-        document.getElementById("yourq"+i+"-"+j).checked = false;
+        document.getElementById("1"+i+j).checked = false;
       }
     }
   }
@@ -159,18 +164,18 @@
     var stream = "?result=";
     for (var i = 0; i < myanswer.length; i++) {
       for (var j = 0; j < myanswer[i].length; j++) {
-        stream = stream+"&myq"+i+"-"+j+"="+myanswer[i][j];
+        stream = stream+"&0"+i+j+"="+myanswer[i][j];
       }
     }
     for (var i = 0; i < youranswer.length; i++) {
       for (var j = 0; j < youranswer[i].length; j++) {
-        stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
+        stream = stream+"&1"+i+j+"="+youranswer[i][j];
       }
     }
     document.getElementById('share').innerText = url + stream;
   }
   function selectmy(x,y) {
-    if (document.getElementById("myq"+x+"-"+y).checked == false) {
+    if (document.getElementById("0"+x+y).checked == false) {
       myanswer[x][y] = 1;
     } else {
       myanswer[x][y] = 0;
@@ -178,18 +183,19 @@
     var stream = "?result=";
     for (var i = 0; i < myanswer.length; i++) {
       for (var j = 0; j < myanswer[i].length; j++) {
-        stream = stream+"&myq"+i+"-"+j+"="+myanswer[i][j];
+        stream = stream+"&0"+i+j+"="+myanswer[i][j];
       }
     }
     for (var i = 0; i < youranswer.length; i++) {
       for (var j = 0; j < youranswer[i].length; j++) {
-        stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
+        stream = stream+"&1"+i+j+"="+youranswer[i][j];
       }
     }
-    location.href = url + stream + "#myq"+Math.round(x/10)*10;
+    console.log(Math.floor(x/10)*10);
+    location.href = url + stream + "#bg0"+Math.floor(x/10)*10;
   }
   function selectyour(x,y) {
-    if (document.getElementById("yourq"+x+"-"+y).checked == false) {
+    if (document.getElementById("1"+x+y).checked == false) {
       youranswer[x][y] = 1;
     } else {
       youranswer[x][y] = 0;
@@ -197,15 +203,16 @@
     var stream = "?result=";
     for (var i = 0; i < myanswer.length; i++) {
       for (var j = 0; j < myanswer[i].length; j++) {
-        stream = stream+"&myq"+i+"-"+j+"="+myanswer[i][j];
+        stream = stream+"&0"+i+j+"="+myanswer[i][j];
       }
     }
     for (var i = 0; i < youranswer.length; i++) {
       for (var j = 0; j < youranswer[i].length; j++) {
-        stream = stream+"&yourq"+i+"-"+j+"="+youranswer[i][j];
+        stream = stream+"&1"+i+j+"="+youranswer[i][j];
       }
     }
-    location.href = url + stream + "#yourq"+Math.round(x/10)*10;
+    console.log(Math.floor(x/10)*10);
+    location.href = url + stream + "#bg1"+Math.floor(x/10)*10;
   }
 </script>
 <footer class="py-3 bg-kulight">
