@@ -54,11 +54,10 @@
           <form class="card-body p-1 pb-0">
             <script type="text/javascript">
             for (var i = 0; i < qset.length; i++) {
-              answer.push([]);
+              answer.push();
               document.write("<div class=\"btn-group w-100 mb-1\" id=\"bg0"+i+"\">");
               for (var j = 0; j < qset[i].length; j++) {
-                answer[i].push("");
-                document.write("<input id=\"0"+i+j+"\" class=\"btn-check\" type=\"checkbox\" name=\"0"+i+j+"\" value=\""+j+"\">");
+                document.write("<input id=\"0"+i+j+"\" class=\"btn-check\" type=\"radio\" name=\"0"+i+"\" value=\""+j+"\">");
                 document.write("<label id=\"for-0"+i+j+"\" class=\"btn btn-outline-success\" for=\"0"+i+j+"\" onclick=\"select("+i+","+j+")\">"+qset[i][j]+"</label>");
               }
               document.write("</div>");
@@ -90,25 +89,21 @@
   var url = window.location.origin + window.location.pathname;
   var parameter = window.location.search;
   for (var i = 0; i < answer.length; i++) {
-    for (var j = 0; j < answer[i].length; j++) {
-      var getanswer = new URLSearchParams(parameter).get("0"+i+j);
-      console.log(getanswer);
-      if (getanswer == 1) {
-        answer[i][j] = 1;
-        document.getElementById("0"+i+j).checked = true;
-      } else {
-        document.getElementById("0"+i+j).checked = false;
-      }
+    var getanswer = new URLSearchParams(parameter).get("0"+i);
+    answer[i] = getanswer;
+    document.getElementById("0"+i+getanswer).checked = true;
+    if (getanswer == 1) {
+    } else {
+      document.getElementById("0"+i).checked = false;
     }
   }
   function result() {
     var stream = "?result=";
     for (var i = 0; i < answer.length; i++) {
-      for (var j = 0; j < answer[i].length; j++) {
-        stream = stream+"&0"+i+j+"="+answer[i][j];
-      }
+      stream = stream+"&0"+i+"="+answer[i];
     }
     document.getElementById('share').innerText = url + stream;
+    document.getElementById('share').select();
   }
   function select(x,y) {
     if (document.getElementById("0"+x+y).checked == false) {
@@ -116,7 +111,7 @@
     } else {
       answer[x][y] = 0;
     }
-    var stream = "?result=";
+    var stream = "?ver=211118";
     for (var i = 0; i < answer.length; i++) {
       for (var j = 0; j < answer[i].length; j++) {
         stream = stream+"&0"+i+j+"="+answer[i][j];
