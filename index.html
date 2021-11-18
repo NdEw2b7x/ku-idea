@@ -237,12 +237,16 @@
     stream = stream+nowversion+"&sex="+sex+"&ort="+ort;
     for (var i = 0; i < myanswer.length; i++) {
       for (var j = 0; j < myanswer[i].length; j++) {
-        stream = stream+"&0"+i+j+"="+myanswer[i][j];
+        if (myanswer[i][j]) {
+          stream = stream+"&0"+i+j+"="+myanswer[i][j];
+        }
       }
     }
     for (var i = 0; i < youranswer.length; i++) {
       for (var j = 0; j < youranswer[i].length; j++) {
-        stream = stream+"&1"+i+j+"="+youranswer[i][j];
+        if (youranswer[i][j]) {
+          stream = stream+"&1"+i+j+"="+youranswer[i][j];
+        }
       }
     }
   }
