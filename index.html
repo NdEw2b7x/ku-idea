@@ -184,20 +184,21 @@
     </div>
   </main>
   <script type="text/javascript">
+  var stream = "?ver=";
   var url = window.location.origin + window.location.pathname;
   var parameter = window.location.search;
   var getversion = new URLSearchParams(parameter).get("ver");
   var getsex = new URLSearchParams(parameter).get("sex");
-  sex = getsex;
-  if (sex) {
-    document.getElementById("btn-"+sex).checked = true;
+  if (getsex) {
+    sex = getsex;
+    document.getElementById("btn-"+getsex).checked = true;
   }
   var getort = new URLSearchParams(parameter).get("ort");
-  ort = getort;
-  if (ort) {
-    document.getElementById("btn-"+ort).checked = true;
+  if (getort) {
+    ort = getort;
+    document.getElementById("btn-"+getort).checked = true;
   }
-  if (getversion !== nowversion) {
+  if (nowversion !== getversion) {
     alert("지원되지 않는 버전에서 작성되었습니다.");
   }
   for (var i = 0; i < myanswer.length; i++) {
@@ -232,8 +233,7 @@
     document.body.removeChild(t);
     alert("링크를 복사했습니다.");
   }
-  var stream = "?ver=";
-  function urlmaker() {
+  function streammaker() {
     stream = stream+nowversion+"&sex="+sex+"&ort="+ort;
     for (var i = 0; i < myanswer.length; i++) {
       for (var j = 0; j < myanswer[i].length; j++) {
@@ -247,12 +247,12 @@
     }
   }
   function result() {
-    urlmaker();
+    streammaker();
     document.getElementById('share').innerText = url + stream;
     document.getElementById('share').select();
   }
   function movepage(card,x) {
-    urlmaker();
+    streammaker();
     location.href = url + stream + "#bg"+card+Math.floor(x/10)*10;
   }
   function selectmy(x,y) {
