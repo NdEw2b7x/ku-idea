@@ -25,7 +25,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <script type="text/javascript">
-            var nowversion = "21.11.19"
+            var nowversion = "21.11.18"
             document.write('<a href="./?ver='+nowversion+'" class="nav-link">초기화</a>');
             </script>
           </li>
@@ -205,8 +205,6 @@
   if (nowversion !== getversion) {
     if (getversion) {
       location.href = url + getversion + "/" + parameter;
-    } else {
-      location.href = url + "?ver=" + nowversion;
     }
   }
   for (var i = 0; i < myanswer.length; i++) {
