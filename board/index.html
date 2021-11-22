@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" ondragstart="return false" oncontextmenu="return false" onselectstart="return false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style media="screen">
+  .bg-kudark {
+    background-color: rgb(3, 107, 63);
+  }
+  .bg-kulight {
+    background-color: rgb(184, 243, 41);
+  }
+  .bg-ku {
+    background-color: rgb(33, 186, 49);
+  }
+  </style>
+  <title>이런 게임 누구랑 하는 건대?</title>
+</head>
+<body>
+  <header class="navbar navbar-expand navbar-dark bg-kudark mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">이런 게임 누구랑 하는 건대?</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://meeting-konkuk.tk/board">초기화</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mailto:genre_crusher.0l@icloud.com">제작자</a>
+          </li>
+        </ul>
+      </div>
+      <span class="navber-text"></span>
+    </div>
+  </header>
+  <main class="container" style="max-width: 30rem;">
+    <script type="text/javascript">
+    // 문항 생성
+    var set_lab = [];
+    set_lab.push("내 나이는?");
+    set_lab.push("내 보드게임 카페 경험은?");
+    set_lab.push("내 보드게임 경험은?");
+    set_lab.push("나는 이런 게임이 좋다. 또는 자신있다.");
+    set_lab.push("내가 좋아하는 장소는");
+    set_lab.push("같이 게임하고 싶은 사람들은?");
+    set_lab.push("내 게임 스타일은?");
+    set_lab.push("더 기억에 남는 엔딩은?");
+    set_lab.push("미팅에 참가한다면 희망 인원수는?");
+    set_lab.push("나중에 동아리가 만들어지면?");
+    var set_que = [];
+    set_que.push(["20-22세","23-25세","26-28세","기타"]);
+    set_que.push(["별로 없어요","몇 달에 한 번","몇 주에 한 번"]);
+    set_que.push(["무경험","유명한 몇 개","10가지 이상"]);
+    set_que.push(["실력으로 승부","실력보다는 운으로"]);
+    set_que.push(["내 마음에 드는 곳","남들도 다 아는 유명한 곳"]);
+    set_que.push(["안친하지만 꿀잼보장","재미는 없어도 나랑 친한"]);
+    set_que.push(["좋아하면 그것만 하는","잘 몰라도 이것 저것"]);
+    set_que.push(["힘들게 승리한 게임","즐겁게 패배한 게임"]);
+    set_que.push(["희망하지 않음","2:2","3:3","커플끼리 더블데이트"]);
+    set_que.push(["가입할 것이다.","가입하지 않을 것이다."]);
+    // 답변 생성
+    var set_ans = [];
+    </script>
+    <article class="row g-3 mb-3">
+      <section class="col-12">
+        <div class="card border-success">
+          <div class="card-header bg-success text-light">
+            미팅 참가 규칙
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">참가를 희망하는 사람은 아래 테스트 결과를 게시해야 합니다.</li>
+            <li class="list-group-item">함께 참가할 동성끼리 조편성은 댓글/쪽지를 통해 직접 해야 합니다.</li>
+            <li class="list-group-item">조편성은 단과대나 나이 등을 충분히 고려해서 진행하십시오.</li>
+            <li class="list-group-item">조편성이 끝나면 조이름을 정하고 <a class="card-link" href="https://open.kakao.com/o/gA8ptpLd">오픈카톡</a>으로 들어오세요.</li>
+            <li class="list-group-item">간단한 소개와 테스트 사진을 보내주시면 됩니다.</li>
+          </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">기대효과 : 동성끼리 구인하는 과정이 포함되므로, 서로 교차 검증이 먼저 이뤄진다.</li>
+            <li class="list-group-item">기대효과 : 혼자 만나는게 아니므로 부담감이 덜해진다.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="col-12">
+        <div class="card border-success">
+          <div class="card-header bg-success text-light">
+            기본정보
+          </div>
+          <div class="card-body">
+            <div class="col-12 btn-group w-100">
+              <input class="btn-check" id="btn-male" type="radio" name="sex">
+              <label class="btn btn-lg btn-outline-success" for="btn-male" onclick="take_sex('male')">남자</label>
+              <input class="btn-check" id="btn-female" type="radio" name="sex">
+              <label class="btn btn-lg btn-outline-success" for="btn-female" onclick="take_sex('female')">여자</label>
+            </div>
+          </div>
+          <div class="card-footer d-grid">
+            <button class="btn btn-success" data-bs-target="#modal-0" data-bs-toggle="modal">Start!</button>
+          </div>
+        </div>
+        <script type="text/javascript">
+        for (var length0 = 0; length0 < Math.ceil(set_que.length / 5); length0++) {
+          document.write('\n<div class="modal" id="modal-'+length0+'">');
+          document.write('\n<div class="modal-dialog modal-dialog-centered">');
+          document.write('\n<div class="modal-content border-sex">');
+          document.write('\n<div class="modal-header bg-sex">보드게임 참가신청</div>');
+          document.write('\n<div class="modal-body row g-2">');
+          for (var i = 5 * length0; i < 5 * (1 + length0); i++) {
+            if (i < set_que.length) {
+              set_ans.push();
+              document.write("\n<div class='col-12'>");
+              document.write("\n<label class=\"form-label\">"+set_lab[i]+"</label>");
+              document.write("\n<div class=\"btn-group w-100 mb-1\" id=\"q"+i+"\">");
+              for (var j = 0; j < set_que[i].length; j++) {
+                document.write("\n<input class=\"btn-check\" id=\"q"+i+"_"+j+"\" type=\"radio\" name=\"q"+i+"\" value=\""+j+"\">");
+                document.write("<label class=\"btn btn-sm btn-outline-primary px-0\" id=\"for"+i+"_"+j+"\" for=\"q"+i+"_"+j+"\" onclick=\"select("+i+","+j+")\">"+set_que[i][j]+"</label>\n");
+              }
+              document.write("</div>\n");
+              document.write("</div>\n");
+            }
+          }
+          document.write('</div>\n');
+          document.write('<div class="modal-footer py-1">\n');
+          document.write('<button class="btn btn-secondary" data-bs-target="#modal-'+(length0-1)+'" data-bs-toggle="modal">이전</button>\n');
+          document.write('<button class="btn btn-primary" data-bs-target="#modal-'+(length0+1)+'" data-bs-toggle="modal">다음</button>\n');
+          document.write('\n</div>');
+          document.write('\n</div>');
+          document.write('\n</div>');
+          document.write('\n</div>');
+        }
+        </script>
+      </section>
+    </article>
+    <div class="modal" id="modal-">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            결과 공유
+          </div>
+          <div class="modal-body">
+            <div class="d-grid">
+              <button class="btn btn-success" data-bs-target="#modal-share" data-bs-toggle="modal" onclick="result()">링크로 공유하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modal-share">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            아래 링크를 복사해서 공유하세요.
+          </div>
+          <div class="modal-body">
+            <textarea id="share" rows="3" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript">
+  var nowversion = "21.11.22"
+  var stream = "?ver=";
+  var url = window.location.origin + window.location.pathname;
+  var parameter = window.location.search;
+  var getversion = new URLSearchParams(parameter).get("ver");
+  if (getversion !== nowversion) {
+    if (getversion) {
+      location.href = url + getversion + "/" + parameter;
+    } else {
+      location.href = url + "?ver=" + nowversion;
+    }
+  }
+  for (var i = 0; i < set_ans.length; i++) {
+    for (var j = 0; j < set_ans[i].length; j++) {
+      var getanswer = new URLSearchParams(parameter).get(i+j);
+      console.log(getanswer);
+      if (getanswer) {
+        myanswer[i][j] = getanswer;
+        document.getElementById("q"+i+"_"+j).checked = true;
+      } else {
+        document.getElementById("q"+i+"_"+j).checked = false;
+      }
+    }
+  }
+  function streammaker() {
+    stream = stream+nowversion;
+    for (var i = 0; i < set_ans.length; i++) {
+      for (var j = 0; j < set_ans[i].length; j++) {
+        if (set_ans[i][j]) {
+          stream = stream+"&0"+i+j+"="+set_ans[i][j];
+        }
+      }
+    }
+  }
+  function result() {
+    streammaker();
+    document.getElementById('share').innerText = url + stream;
+    document.getElementById('share').select();
+    document.execCommand("Copy");
+    alert("링크를 복사했습니다.");
+  }
+  function movepage(card,x) {
+    streammaker();
+    location.href = url + stream + "#bg"+card+Math.floor(x/10)*10;
+  }
+  function select(x,y) {
+    set_ans[x] = y;
+  }
+</script>
+<footer class="py-3 bg-kulight">
+  <div id="copyright" class="m-auto text-center">
+    Copyright © 2021 이런 사람 어디있는 건대?
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="../fun.js" charset="utf-8"></script>
+</body>
+</html>
